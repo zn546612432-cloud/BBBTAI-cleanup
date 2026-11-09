@@ -40,7 +40,7 @@ jobs:
       - name: Build Tai Vision in isolated save namespace
         run: |
           mv dist stable-dist
-          PHONE_PREVIEW=true GITHUB_PAGES_BASE="/BBBTAI/review/tai-vision-20261105/" npm run build:pages
+          PHONE_PREVIEW=true GITHUB_PAGES_BASE="/${{ github.event.repository.name }}/review/tai-vision-20261105/" npm run build:pages
           mkdir -p stable-dist/review/tai-vision-20261105
           cp -a dist/. stable-dist/review/tai-vision-20261105/
           rm -rf dist
@@ -61,7 +61,7 @@ jobs:
           (
             cd .review-sources/story55
             npm ci
-            GITHUB_SHA="$(git rev-parse HEAD)" PHONE_PREVIEW=true GITHUB_PAGES_BASE="/BBBTAI/review/55-20261101/" npm run build:pages
+            GITHUB_SHA="$(git rev-parse HEAD)" PHONE_PREVIEW=true GITHUB_PAGES_BASE="/${{ github.event.repository.name }}/review/55-20261101/" npm run build:pages
           )
           mkdir -p dist/review/55-20261101
           cp -a .review-sources/story55/dist/. dist/review/55-20261101/
