@@ -40,7 +40,7 @@ npm run dev
 | `src/services/` | 状态、路由、深链、Presence、邀请、棋谱、消息及未来服务接口 |
 | `src/story/` | 独立剧情内容目录；`demo/` 严格只供界面测试 |
 | `src/editor/` | 内容编辑器及以后审核/发布工作流扩展位置 |
-| `src/legacy/` | 上一版未发布原型的代码备份，不包含在构建输出中 |
+| 清理前旧原型 | 完整保存在 `backup/pre-cleanup-20261109` 分支；当前分支不再携带这份备份 |
 | `public/wallpapers/`、`public/icons/` | 原创图片素材 |
 | `supabase/` | 后续接入说明；旧 SQL/代理草案已归档，不能直接部署 |
 

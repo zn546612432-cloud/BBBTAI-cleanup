@@ -63,6 +63,6 @@ router.open({appId:'maps',route:'/',params:{id:'orphanage'}});
 - 直接读取 Geofabrik Macau 的合法矢量数据 ZIP（不是地图图片），由 `scripts/build-offline-macau.py` 处理 OSM 道路、建筑、水域、绿地、铁路等图层，输出 `data/offline-macau-detail.js`。
 - `data/offline-macau.js` 保留不依赖在线数据的基础澳门行政区轮廓、轻轨和东望洋赛道。
 - `.github/workflows/offline-macau.yml` 仅对 `feat/leaflet-apple-maps-preview-1103` 生效，将约 4 MB 的离线地图模块写回该分支；不会部署或更改 main。
-- `scripts/build-offline-macau-preview.py` 将离线底图、Leaflet、CSS 合成单一 `preview/ximeng-macau-offline.html` 文件，无需网络、API key、瓦片服务器即可双指缩放、拖动和搜索测试标记。它是独立地图预览，不带微信或游戏存档。
+- `scripts/build-offline-macau-preview.py` 将离线底图、Leaflet、CSS 合成单一 `preview/ximeng-macau-offline.html` 文件，无需网络、API key、瓦片服务器即可双指缩放、拖动和搜索测试标记。它是独立地图预览，不带微信或游戏存档；HTML 按需生成并保存为 Actions artifact，不再提交到 Git。
 - GitHub Actions 自动运行 map test、JavaScript syntax checks 及完整 `npm run build:pages`，再发布预览 HTML 的 Actions artifact。
 - **离线范围说明**：独立 HTML 下载到本地后可以断网打开；在线 GitHub Pages 网站若从未打开过，其整个入口页面不保证断网加载。地图应用只要已加载，缩放、拖动和搜索全程不联网。
