@@ -27,7 +27,7 @@ flowchart TD
 
 ## 内容编辑与服务接入
 
-`src/story/schemas/content.schema.json` 定义独立内容事件格式。正式文案按日期、场景、渠道拆分；只有 `reviewStatus: approved` 的内容包可由剧情加载接口接纳。浏览器编辑器目前只写本机状态，不会直接改 Git 文件或上线内容。Supabase 适配层位于 `src/services/supabase/`；MiniMax 适配层位于 `src/services/voice/`，旧服务端代理草案归档在 `src/legacy/`，不可直接部署。未配置密钥、登录、审核与服务端授权时保持未连接。
+`src/story/schemas/content.schema.json` 定义独立内容事件格式。正式文案按日期、场景、渠道拆分；只有 `reviewStatus: approved` 的内容包可由剧情加载接口接纳。浏览器编辑器目前只写本机状态，不会直接改 Git 文件或上线内容。Supabase 适配层位于 `src/services/supabase/`；MiniMax 适配层位于 `src/services/voice/`，旧服务端代理草案保留在 `backup/pre-cleanup-20261109` 分支的 `src/legacy/`，不可直接部署。未配置密钥、登录、审核与服务端授权时保持未连接。
 
 ## 验收清单
 
