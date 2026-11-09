@@ -6,6 +6,9 @@ import {readdir,readFile,stat,lstat} from 'node:fs/promises';
 import path from 'node:path';
 
 const dir=process.argv[2]||'dist';
+const repo=(process.env.GITHUB_REPOSITORY||'zn546612432-cloud/BBBTAI').split('/').at(-1);
+const base=process.env.GITHUB_PAGES_BASE||`/${repo}/`;
+if(!/^\/[A-Za-z0-9._/-]*\/$/.test(base)||base.includes('..'))throw Error('Invalid GitHub Pages base path');
 const allowedReviews=['55-20261101','tai-vision-20261105'];
 const readJSON=async file=>JSON.parse(await readFile(file,'utf8'));
 const check=(condition,message)=>{if(!condition)throw Error('Pages cleanup audit: '+message);};
@@ -14,10 +17,10 @@ const actualReviews=(await readdir(path.join(dir,'review'))).sort();
 check(JSON.stringify(actualReviews)===JSON.stringify([...allowedReviews].sort()),
  'only Story55 and Tai Vision are allowed in /review/: '+actualReviews.join(', '));
 const roots=[
- {key:'production',folder:dir,expected:'/BBBTAI/'},
- {key:'latest-preview',folder:path.join(dir,'preview'),expected:'/BBBTAI/preview/'},
- {key:'story55',folder:path.join(dir,'review','55-20261101'),expected:'/BBBTAI/review/55-20261101/'},
- {key:'tai-vision',folder:path.join(dir,'review','tai-vision-20261105'),expected:'/BBBTAI/review/tai-vision-20261105/'}
+ {key:'production',folder:dir,expected:base},
+ {key:'latest-preview',folder:path.join(dir,'preview'),expected:base+'preview/'},
+ {key:'story55',folder:path.join(dir,'review','55-20261101'),expected:base+'review/55-20261101/'},
+ {key:'tai-vision',folder:path.join(dir,'review','tai-vision-20261105'),expected:base+'review/tai-vision-20261105/'}
 ];
 const sizes={};
 async function walk(folder){
